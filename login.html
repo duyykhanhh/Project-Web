@@ -34,12 +34,16 @@
     <link href="css/style.css" rel="stylesheet"/>
     <!-- responsive style -->
     <link href="css/responsive.css" rel="stylesheet"/>
+
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>-->
 
 
 </head>
+
 <body>
+
 <header class="header_section" style="background-color: black;">
+
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
             <a class="navbar-brand" href="index.html">
@@ -142,6 +146,46 @@
     </div>
 </header>
 <div id="content">
+    <!--Modal-->
+    <div id="modal" >
+        <div id="modal-inner" class="show">
+        <p id="modal-text1">Bạn quên mật khẩu?</p>
+        <p id="modal-text2">Đừng lo lắng, bạn có th đặt lại dễ dàng</p>
+        <p id="modal-text3">Chúng tôi sẽ gửi cho bạn một email có liên kết để đặt lại mật khẩu của bạn.</p>
+        <div class="login-box" id="email-container-modal">
+            <label for="email">Email:
+                <input class="login-box-input" id="email-modal" type="text" size="55px"
+                       placeholder="Nhập email của bạn">
+                <div id="get-pass-by-mail">
+                <button type="submit">Gửi email đặt lại mật khẩu</button>
+                </div>
+
+            </label>
+        </div>
+        </div>
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("modal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("forget-password-button");
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+          modal.style.display = 'block';
+        }
+
+
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <!--End modal-->
     <div id="slogan">
         <img src="images/signin.jpg">
     </div>
@@ -162,7 +206,7 @@
                     </label>
                 </div>
                 <div class="forget-password-container">
-                    <a href="">Bạn quên mật khẩu?</a>
+                    <button id="forget-password-button" href="">Bạn quên mật khẩu?</button>
                 </div>
                 <div class="login-button-container">
                     <button type="submit" class="login-button">Đăng nhập
@@ -276,4 +320,5 @@
     </div>
 </footer>
 </body>
+<!--<script src="js/forgot-password.js"></script>-->
 </html>
