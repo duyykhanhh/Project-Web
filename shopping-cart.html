@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <meta charset="utf-8"/>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -11,22 +11,22 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-
+    <link rel="stylesheet" href="css/login.css">
     <link rel="shortcut icon" href="images/favicon.png" type="">
 
     <title> Feane </title>
-
+    <!-- nice select  -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+          integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+          crossorigin="anonymous"/>
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 
     <!--owl slider stylesheet -->
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-    <!-- nice select  -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
-          integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
-          crossorigin="anonymous"/>
+
     <!-- font awesome style -->
     <link href="css/font-awesome.min.css" rel="stylesheet"/>
 
@@ -34,15 +34,12 @@
     <link href="css/style.css" rel="stylesheet"/>
     <!-- responsive style -->
     <link href="css/responsive.css" rel="stylesheet"/>
-    <script src="js/bootstrap.js"></script>
-    <link rel="stylesheet" href="css/login.css">
+
+    <link rel="stylesheet" href="css/shopping-cart.css">
 
 </head>
-
-<body >
-
+<body>
 <header class="header_section" style="background-color: black;">
-
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
             <a class="navbar-brand" href="index.html">
@@ -144,82 +141,158 @@
         </nav>
     </div>
 </header>
-<div id="content">
-    <!--Modal-->
-    <div id="modal" >
-        <div id="modal-inner" class="show">
-        <p id="modal-text1">Bạn quên mật khẩu?</p>
-        <p id="modal-text2">Đừng lo lắng, bạn có th đặt lại dễ dàng</p>
-        <p id="modal-text3">Chúng tôi sẽ gửi cho bạn một email có liên kết để đặt lại mật khẩu của bạn.</p>
-        <div class="login-box" id="email-container-modal">
-            <label for="email-modal">Email:
-                <input class="login-box-input" id="email-modal" type="text" size="55px"
-                       placeholder="Nhập email của bạn"></label>
-                <div id="get-pass-by-mail">
-                <button type="submit">Gửi email đặt lại mật khẩu</button>
-                </div>
 
-            </label>
+<div id="cart-shopping">
+    <div id="cart-container">
+        <div class="top-section">
+            <h1>GIỎ HÀNG CỦA TÔI</h1>
         </div>
-        </div>
-    </div>
-
-    <!--End modal-->
-    <div id="slogan">
-        <img src="images/signin.jpg">
-    </div>
-    <div id="login">
-        <div class="login-container">
-            <h1>Đăng nhập</h1>
-            <form class="login-form">
-                <div class="login-box" id="email-container">
-                    <label for="email">Email:
-                        <input class="login-box-input" id="email" type="text" size="80px"
-                               placeholder="Nhập email của bạn">
-                    </label>
-                </div>
-                <div class="login-box" id="password-container">
-                    <label for="password">Mật khẩu
-                        <input class="login-box-input" id="password" size="80px" type="password"
-                               placeholder="Nhập password của bạn">
-                    </label>
-                </div>
-                <div class="forget-password-container">
-                    <button id="forget-password-button" href="">Bạn quên mật khẩu?</button>
-                </div>
-                <div class="login-button-container">
-                    <button type="submit" class="login-button">Đăng nhập
-                    </button>
-                </div>
-            </form>
-
-        </div>
-        <div class="login-method-container">
-            <h5>Hoặc tiếp tục với</h5>
-            <div class="login-method" id="facebook-method">
-                <button id="facebook-button" type="sumit">
-                    <span class="button-wrapper">
-                        <i class="fa fa-facebook"></i>
-                        Đăng nhập bằng Facebook
-                    </span>
-                </button>
+        <div class="left-section">
+            <div class="cart-row">
+                <div class="cart-item cart-header cart-column">Sản Phẩm</div>
+                <div class="cart-price cart-header cart-column">Giá</div>
+                <div class="cart-quantity cart-header cart-column">Số Lượng</div>
             </div>
-            <div class="login-method" id="gmail-method">
-                <button id="gmail-button" type="sumit">
-                    <span class="button-wrapper">
-                        <img class="gmail-icon" src="images/gmail.jpg">
-                        Đăng nhập bằng Gmail
-                    </span>
+            <div class="cart-items">
+                <div class="cart-row">
+                    <div class="cart-item cart-column">
+                        <img class="cart-item-img"
+                             src="https://cdn.tgdd.vn/Files/2017/03/22/963765/cach-lam-ga-ran-thom-ngon-8_760x450.jpg">
+                        <div class="cart-item-info">
+                            <div>
+                                <span class="cart-item-title">Gà rán sốt cay</span></div>
+                            <div>
+                                <button type="button" class="delete-btn">Xóa</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-price cart-column">
+                        <span class="cart-price-content">25000</span>
+                    </div>
+                    <div class="cart-quantity cart-column">
+                        <input type="button" class="minus quantity-btn" value="-">
+                        <input type="text" class="cart-quantity-input" size="1px" value="1">
+                        <input type="button" class="plus quantity-btn" value="+">
+                    </div>
+                </div>
 
-                </button>
+                <div class="cart-row">
+                    <div class="cart-item cart-column">
+                        <img class="cart-item-img"
+                             src="https://cdn.tgdd.vn/Files/2017/03/22/963765/cach-lam-ga-ran-thom-ngon-8_760x450.jpg">
+                        <div class="cart-item-info">
+                            <div>
+                                <span class="cart-item-title">Gà rán sốt cay</span></div>
+                            <div>
+                                <button type="button" class="delete-btn">Xóa</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-price cart-column">
+                        <span class="cart-price-content">25000</span>
+                    </div>
+                    <div class="cart-quantity cart-column">
+                        <input type="button" class="minus quantity-btn" value="-">
+                        <input type="text" class="cart-quantity-input" size="1px" value="1">
+                        <input type="button" class="plus quantity-btn" value="+">
+                    </div>
+                </div>
+
+                <div class="cart-row">
+                    <div class="cart-item cart-column">
+                        <img class="cart-item-img"
+                             src="https://cdn.tgdd.vn/Files/2017/03/22/963765/cach-lam-ga-ran-thom-ngon-8_760x450.jpg">
+                        <div class="cart-item-info">
+                            <div>
+                                <span class="cart-item-title">Gà rán sốt cay</span></div>
+                            <div>
+                                <button type="button" class="delete-btn">Xóa</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-price cart-column">
+                        <span class="cart-price-content">25000</span>
+                    </div>
+                    <div class="cart-quantity cart-column">
+                        <input type="button" class="minus quantity-btn" value="-">
+                        <input type="text" class="cart-quantity-input" size="1px" value="1">
+                        <input type="button" class="plus quantity-btn" value="+">
+                    </div>
+                </div>
+
+                <div class="cart-row">
+                    <div class="cart-item cart-column">
+                        <img class="cart-item-img"
+                             src="https://cdn.tgdd.vn/Files/2017/03/22/963765/cach-lam-ga-ran-thom-ngon-8_760x450.jpg">
+                        <div class="cart-item-info">
+                            <div>
+                                <span class="cart-item-title">Gà rán sốt cay</span></div>
+                            <div>
+                                <button type="button" class="delete-btn">Xóa</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-price cart-column">
+                        <span class="cart-price-content">25000</span>
+                    </div>
+                    <div class="cart-quantity cart-column">
+                        <input type="button" class="minus quantity-btn" value="-">
+                        <input type="text" class="cart-quantity-input" size="1px" value="1">
+                        <input type="button" class="plus quantity-btn" value="+">
+                    </div>
+                </div>
+
+
             </div>
+
         </div>
-        <div class="register-container">
-            <p>Bạn chưa có tài khoản?</p>
-            <a href="register.html">Đăng ký</a>
+        <div class="right-section">
+            <div class="cart-total">
+                <!--                <span class="food-type-number">Số món</span>-->
+                <h6><b>Bạn có Mã giảm giá?</b></h6>
+                <hr>
+                <div class="coupon-container">
+                    <input class="coupon-code" type="text" placeholder="Mã giảm giá">
+                    <input class="apply-coupon-button" type="submit" value="Áp dụng">
+                </div>
+                <hr>
+                <div class="price-total-container">
+                    <div class="price-total-block">
+                        <div class="price-total-items-left">
+                            <span id="product-price-total" class="price-total-items-content-left">Tổng đơn hàng</span>
+                        </div>
+                        <div class="price-total-items-right">
+                            <span id="product-price-total-value" class="price-total-items-content-right">999999</span>
+                        </div>
+                    </div>
+                    <div class="price-total-block">
+                        <div class="price-total-items-left">
+                            <span class="price-total-items-content-left">Phí giao hàng</span>
+                        </div>
+                        <div class="price-total-items-right">
+                            <span  class="price-total-items-content-right">0</span>
+                        </div>
+                    </div>
+                    <div class="price-total-block">
+                        <div class="price-total-items-left">
+                            <span class="price-total-items-content-left"><b>Tổng thanh toán</b></span>
+                        </div>
+                        <div class="price-total-items-right">
+                            <span class="price-total-items-content-right">0</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <input class="pay-button" type="submit" value="Thanh toán">
+                </div>
+            </div>
         </div>
     </div>
 </div>
+</div>
+</div>
+
 <footer class="footer_section">
     <div class="container">
         <div class="row">
@@ -298,7 +371,6 @@
         </div>
     </div>
 </footer>
-
 </body>
-<script src="js/forgot-password.js"></script>
+<script src="js/shopping-cart.js"></script>
 </html>
