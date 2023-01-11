@@ -1,9 +1,11 @@
 package garanweb.entity;
 
+import java.math.BigDecimal;
+
 public class OrderItem {
 	private int id;
 	private int quantity;
-	private double price;
+	private BigDecimal price;
 	private int orderId;
 	private int productId;
 
@@ -23,11 +25,11 @@ public class OrderItem {
 		this.quantity = quantity;
 	}
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -47,7 +49,7 @@ public class OrderItem {
 		this.productId = productId;
 	}
 
-	public OrderItem(int id, int quantity, double price, int orderId, int productId) {
+	public OrderItem(int id, int quantity, BigDecimal price, int orderId, int productId) {
 		super();
 		this.id = id;
 		this.quantity = quantity;
@@ -56,7 +58,7 @@ public class OrderItem {
 		this.productId = productId;
 	}
 
-	public OrderItem(int quantity, double price, int orderId, int productId) {
+	public OrderItem(int quantity, BigDecimal price, int orderId, int productId) {
 		super();
 		this.quantity = quantity;
 		this.price = price;
@@ -66,5 +68,13 @@ public class OrderItem {
 	public OrderItem() {
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public String toString() {
+		return "OrderItem [id=" + id + ", quantity=" + quantity + ", price=" + price + ", orderId=" + orderId
+				+ ", productId=" + productId + "]";
+	}
+	
+	
 
 }

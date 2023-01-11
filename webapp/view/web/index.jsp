@@ -60,8 +60,9 @@
 		<header class="header_section">
 			<div class="container">
 				<nav class="navbar navbar-expand-lg custom_nav-container ">
-					<a class="navbar-brand" href="${pageContext.request.contextPath}/trang-chu"> <span> ABC
-							Chicken </span>
+					<a class="navbar-brand"
+						href="${pageContext.request.contextPath}/trang-chu"> <span>
+							ABC Chicken </span>
 					</a>
 
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -74,37 +75,22 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav  mx-auto ">
 							<li class="nav-item active"><a class="nav-link"
-								href="${pageContext.request.contextPath}/trang-chu">Trang chủ <span class="sr-only">(current)</span></a></li>
+								href="${pageContext.request.contextPath}/trang-chu">Trang
+									chủ <span class="sr-only">(current)</span>
+							</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="${pageContext.request.contextPath}/thuc-don">Thực
-									đơn</a></li>
+								href="${pageContext.request.contextPath}/thuc-don">Thực đơn</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="${pageContext.request.contextPath}/about">About
-									us</a></li>
+								href="${pageContext.request.contextPath}/about">About us</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="${pageContext.request.contextPath}/order">Đặt
-									bàn</a></li>
-							<c:if test="${sessionScope.user_session == null}">
-								<li class="nav-item"><a class="nav-link"
-									style="line-height: 58px;"
-									href="${pageContext.request.contextPath}/login">Login</a></li>
-							</c:if>
-
-							<c:if test="${sessionScope.user_session != null}">
-								<li class="nav-item"><a class="nav-link" href=""
-									style="color: blue;">${sessionScope.user_session.name}</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: graytext;"
-									href="${pageContext.request.contextPath}/logout">Đăng
-										Xuất</a></li>
-							</c:if>
+								href="${pageContext.request.contextPath}/order">Đặt bàn</a></li>
 						</ul>
 						<div class="user_option">
-
-							<a class="cart_link"
-								href="${pageContext.request.contextPath}/cart">
-								<svg version="1.1" id="Capa_1"
-									xmlns="http://www.w3.org/2000/svg"
+							<a href="${pageContext.request.contextPath}/login"
+								class="user_link"> <i class="fa fa-user" aria-hidden="true"></i>
+							</a> <a class="cart_link"
+								href="${pageContext.request.contextPath}/cart"> <svg
+									version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
 									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									viewBox="0 0 456.029 456.029"
 									style="enable-background: new 0 0 456.029 456.029;"
@@ -164,13 +150,14 @@
                   </g>
                 </svg>
 							</a>
-							<form class="form-inline">
+							<form id="searchFood" class="form-inline"
+								action="">
+								<input type="hidden" name="nameFood" id="Foodd" value="">
 								<button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-									<i class="fa fa-search" aria-hidden="true"></i>
+									<i class="fa fa-search" aria-hidden="true" onclick="search();"></i>
 								</button>
 							</form>
-							<a
-								href="${pageContext.request.contextPath}/thuc-don"
+							<a href="${pageContext.request.contextPath}/thuc-don"
 								class="order_online"> Order Online </a>
 						</div>
 					</div>
@@ -190,8 +177,7 @@
 										<h1>Cửa hàng gà rán</h1>
 										<p>Thiên đường gà rán</p>
 										<div class="btn-box">
-											<a
-												href="${pageContext.request.contextPath}/thuc-don"
+											<a href="${pageContext.request.contextPath}/thuc-don"
 												class="btn1"> Order Now </a>
 										</div>
 									</div>
@@ -226,12 +212,16 @@
 			<div class="filters-content">
 				<div class="row grid">
 					<c:forEach var="list" items="${list}">
+						<c:url var="tempLink" value="/product-detail">
+							<c:param name="productId" value="${list.id}" />
+						</c:url>
 						<div class="col-sm-6 col-lg-4 all pizza">
 							<div class="box">
 								<div>
 									<div class="img-box">
 
-										<img src="${list.image }" alt="">
+										<a href="${tempLink }"><img src="${list.image}"
+											alt="ABC Chicken"></a>
 									</div>
 									<div class="detail-box">
 										<h5>${list.name }</h5>
@@ -244,7 +234,7 @@
 											</h6>
 
 
-											<a href=""> <svg version="1.1" id="Capa_1"
+											<a href="#!"> <svg version="1.1" id="Capa_1"
 													xmlns="http://www.w3.org/2000/svg"
 													xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 													viewBox="0 0 456.029 456.029"
@@ -314,7 +304,8 @@
 				</div>
 			</div>
 			<div class="btn-box">
-				<a href="${pageContext.request.contextPath}/thuc-don"> Xem thêm </a>
+				<a href="${pageContext.request.contextPath}/thuc-don"> Xem thêm
+				</a>
 			</div>
 		</div>
 	</section>
@@ -352,55 +343,6 @@
 
 	<!-- end about section -->
 
-	<!-- book section -->
-	<section class="book_section layout_padding">
-		<div class="container">
-			<div class="heading_container">
-				<h2>Đặt bàn</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form_container">
-						<form action="">
-							<div>
-								<input type="text" class="form-control" placeholder="Họ và tên" />
-							</div>
-							<div>
-								<input type="text" class="form-control"
-									placeholder="Số điện thoại" />
-							</div>
-							<div>
-								<input type="email" class="form-control" placeholder="Email" />
-							</div>
-							<div>
-								<select class="form-control nice-select wide">
-									<option value="" disabled selected>Bàn dành cho mấy
-										người?</option>
-									<option value="">2</option>
-									<option value="">3</option>
-									<option value="">4</option>
-									<option value="">5</option>
-								</select>
-							</div>
-							<div>
-								<input type="date" class="form-control">
-							</div>
-							<div class="btn_box">
-								<button>Đặt ngay</button>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="map_container ">
-						<div id="googleMap"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- end book section -->
-
 	<!-- client section -->
 
 	<section class="client_section layout_padding-bottom">
@@ -419,7 +361,9 @@
 								<p>Nhà phê bình</p>
 							</div>
 							<div class="img-box">
-								<img src="images/client1.jpg" alt="" class="box-img">
+								<img
+									src="${pageContext.request.contextPath}/view/web/images/client1.jpg"
+									alt="" class="box-img">
 							</div>
 						</div>
 					</div>
@@ -431,7 +375,9 @@
 								<p>Nhà phê bình</p>
 							</div>
 							<div class="img-box">
-								<img src="images/client2.jpg" alt="" class="box-img">
+								<img
+									src="${pageContext.request.contextPath}/view/web/images/client2.jpg"
+									alt="" class="box-img">
 							</div>
 						</div>
 					</div>
@@ -491,7 +437,8 @@
 	<!-- footer section -->
 
 	<!-- jQery -->
-	<script src="js/jquery-3.4.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/view/web/js/jquery-3.4.1.min.js"></script>
 	<!-- popper js -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -500,7 +447,8 @@
 		
 	</script>
 	<!-- bootstrap js -->
-	<script src="js/bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/view/web/js/bootstrap.js"></script>
 	<!-- owl slider -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
@@ -513,14 +461,15 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
 	<!-- custom js -->
-	<script src="js/custom.js"></script>
+	<script src="${pageContext.request.contextPath}/view/web/js/custom.js"></script>
 	<!-- Google Map -->
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
 		
 	</script>
 	<!-- End Google Map -->
-
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/view/web/js/search.js"></script>
 </body>
 
 </html>

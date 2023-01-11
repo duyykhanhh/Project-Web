@@ -22,7 +22,7 @@
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3"
-			href="${pageContext.request.contextPath}/view/admin/">ABC Chicken</a>
+			href="${pageContext.request.contextPath}/admin-trang-chu">ABC Chicken</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -39,7 +39,7 @@
 				aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -51,7 +51,7 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">core</div>
-						<a class="nav-link" href="${pageContext.request.contextPath}/">
+						<a class="nav-link" href="${pageContext.request.contextPath}/admin-trang-chu">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> Dashboard

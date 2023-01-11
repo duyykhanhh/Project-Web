@@ -15,9 +15,10 @@
 			<div class="card-header"></div>
 		</div>
 		<div class="container add">
-			<form action="${pageContext.request.contextPath}/admin-edit-order-detail" method="post">
-				<input type="hidden" name="command" value="EDIT" /> <input
-					type="hidden" name="id" value="${item.id}">
+			<form
+				action="${pageContext.request.contextPath}/admin-add-order-detail"
+				method="post">
+				<input type="hidden" name="command" value="ADD" />
 				<table>
 					<tbody>
 
@@ -31,25 +32,24 @@
 						</tr>
 						<tr>
 							<td><label>Price:</label></td>
-							<td><input type="text" name="price" placeholder="Price"
-								value="${item.price}" /></td>
+							<td><input type="text" name="price" placeholder="Price" /></td>
 						</tr>
 						<tr>
 							<td><label>Quantity:</label></td>
 							<td><input type="text" name="quantity"
-								placeholder="Quantity" value="${item.quantity}" /></td>
+								placeholder="Quantity" /></td>
 						</tr>
 						<tr>
 							<td>Order Id:</td>
 							<td><select name="orderId">
-									<c:forEach var="z" items="${listOrder}">
-										<option value="${z.id}">${z.id}</option>
+									<c:forEach var="u" items="${listOrder}">
+										<option value="${u.id}">${u.id}</option>
 									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td><label></label></td>
-							<td><input type="submit" value="Edit" class="save" /></td>
+							<td><input type="submit" value="Add" class="save" /></td>
 						</tr>
 					</tbody>
 				</table>

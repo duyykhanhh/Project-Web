@@ -75,23 +75,9 @@
 							<li class="nav-item"><a class="nav-link"
 								href="${pageContext.request.contextPath}/order">Đặt
 									bàn</a></li>
-							<c:if test="${sessionScope.user_session == null}">
-								<li class="nav-item"><a class="nav-link"
-									style="line-height: 58px;"
-									href="${pageContext.request.contextPath}/login">Login</a></li>
-							</c:if>
-
-							<c:if test="${sessionScope.user_session != null}">
-								<li class="nav-item"><a class="nav-link" href=""
-									style="color: blue;">${sessionScope.user_session.name}</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: graytext;"
-									href="${pageContext.request.contextPath}/logout">Đăng
-										Xuất</a></li>
-							</c:if>
 						</ul>
 						<div class="user_option">
-							<a href="" class="user_link"> <i class="fa fa-user"
+							<a href="${pageContext.request.contextPath}/login" class="user_link"> <i class="fa fa-user"
 								aria-hidden="true"></i>
 							</a> <a class="cart_link" href="${pageContext.request.contextPath}/cart"> <svg version="1.1"
 									id="Capa_1" xmlns="http://www.w3.org/2000/svg"

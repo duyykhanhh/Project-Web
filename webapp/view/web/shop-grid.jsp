@@ -97,23 +97,10 @@
 							href="${pageContext.request.contextPath}/about">About us</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/order">Đặt bàn</a></li>
-						<c:if test="${sessionScope.user_session == null}">
-							<li class="nav-item"><a class="nav-link"
-								style="line-height: 58px;"
-								href="${pageContext.request.contextPath}/login">Login</a></li>
-						</c:if>
-
-						<c:if test="${sessionScope.user_session != null}">
-							<li class="nav-item"><a class="nav-link" href=""
-								style="color: blue;">${sessionScope.user_session.name}</a></li>
-							<li class="nav-item"><a class="nav-link"
-								style="color: graytext;"
-								href="${pageContext.request.contextPath}/logout">Đăng Xuất</a></li>
-						</c:if>
 					</ul>
 					<div class="user_option">
-						<a href="" class="user_link"> <i class="fa fa-user"
-							aria-hidden="true"></i>
+						<a href="${pageContext.request.contextPath}/login"
+							class="user_link"> <i class="fa fa-user" aria-hidden="true"></i>
 						</a> <a class="cart_link"
 							href="${pageContext.request.contextPath}/cart"> <svg
 								version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -272,13 +259,19 @@
 					</div>
 					<div class="row">
 						<c:forEach var="item" items="${list }">
+							<c:url var="tempLink" value="/product-detail">
+								<c:param name="productId" value="${item.id}" />
+							</c:url>
 							<div class="col-lg-4 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="${item.image }"></div>
+
+									<a href="${tempLink }"><img src="${item.image }"
+										class="product__item__pic set-bg"></a>
+
+
 									<div class="product__item__text">
 										<h6>
-											<a href="">${item.name}</a>
+											<a href="${tempLink }">${item.name}</a>
 										</h6>
 										<h5>
 											<c:set var="p" value="${item.price}" />

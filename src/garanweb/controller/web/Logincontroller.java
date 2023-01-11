@@ -15,11 +15,10 @@ import garanweb.entity.Account;
 /**
  * Servlet implementation class Logincontroller
  */
-@WebServlet("/login")
+@WebServlet({"/login"})
 public class Logincontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDao dao;
-
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -27,6 +26,7 @@ public class Logincontroller extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 		dao = new UserDao();
+		
 	}
 
 	/**
@@ -43,7 +43,21 @@ public class Logincontroller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("view/web/login.jsp").forward(request, response);
+		try {
+			Account user = null;
+			HttpSession session = request.getSession();
+			user = (Account)session.getAttribute("user_session");
+			if (user != null) {
+				request.setAttribute("user", user);
+				request.getRequestDispatcher("view/web/user-profile.jsp").forward(request, response);
+			}else {
+				request.getRequestDispatcher("view/web/login.jsp").forward(request, response);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			request.getRequestDispatcher("view/web/login.jsp").forward(request, response);
+		}
+		
 	}
 
 	/**

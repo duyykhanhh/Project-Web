@@ -14,8 +14,8 @@
 		<div class="card-header"></div>
 	</div>
 	<div class="container add">
-		<form action="${pageContext.request.contextPath}/admin-edit-order" method="post">
-			<input type="hidden" name="command" value="EDIT" /> <input
+		<form action="${pageContext.request.contextPath}/admin-add-order" method="post">
+			<input type="hidden" name="command" value="ADD" /> <input
 				type="hidden" name="id" value="${item.id}">
 			<table>
 				<tbody>
@@ -27,13 +27,13 @@
 					<tr>
 						<td><label>Phone Number:</label></td>
 						<td><input type="text" name="phoneNumber"
-							placeholder="Phone Number" value="${item.phone}" />
+							placeholder="Phone Number" " />
 						</td>
 					</tr>
 					<tr>
 						<td><label>Total Price:</label></td>
 						<td><input type="text" name="totalPrice"
-							placeholder="Total Price" value="${item.totalPrice}" /></td>
+							placeholder="Total Price" " /></td>
 					</tr>
 					<tr>
 						<td><label>Status:</label></td>
@@ -52,7 +52,7 @@
 					</tr>
 					<tr>
 						<td><label></label></td>
-						<td><input type="submit" value="Edit" class="save" /></td>
+						<td><input type="submit" value="Add" class="save" /></td>
 					</tr>
 				</tbody>
 			</table>

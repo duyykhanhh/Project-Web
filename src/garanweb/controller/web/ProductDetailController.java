@@ -7,23 +7,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import garanweb.entity.Account;
+import garanweb.dao.ProductDao;
+import garanweb.entity.Product;
 
 /**
- * Servlet implementation class OrderController
+ * Servlet implementation class ProductDetail
  */
-@WebServlet("/order")
-public class OrderController extends HttpServlet {
+@WebServlet("/product-detail")
+public class ProductDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private ProductDao dao;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrderController() {
+    public ProductDetailController() {
         super();
         // TODO Auto-generated constructor stub
+        dao = new ProductDao();
     }
 
 	/**
@@ -39,20 +40,14 @@ public class OrderController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			Account user = null;
-			HttpSession session = request.getSession();
-			user = (Account)session.getAttribute("user_session");
-			if(user != null) {
-				request.getRequestDispatcher("view/web/book.jsp").forward(request, response);
-			}else {
-				response.sendRedirect(request.getContextPath() + "/login");
-			}
-			
+			int productId = Integer.parseInt(request.getParameter("productId"));
+			Product item = dao.getItem(productId);
+			request.setAttribute("item", item);
+			request.getRequestDispatcher("view/web/shop-details.jsp").forward(request, response);
 		} catch (Exception e) {
 			// TODO: handle exception
 			response.sendRedirect(request.getContextPath() + "/trang-chu");
 		}
-		
 	}
 
 	/**

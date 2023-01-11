@@ -16,9 +16,26 @@ public class UserDao {
 	static final String INSERT = "INSERT INTO account(name, password, email, phone, admin) VALUES(?,?,?,?,?)";
 	static final String CHECKDUPEMAIL = "SELECT * FROM account WHERE email=?";
 	static final String GET_USER = "SELECT * FROM account";
+	static final String GET_USER1 = "SELECT * FROM account WHERE admin != 0";
 	static final String LOAD_USER = "SELECT * FROM account where id = ?";
 	static final String LOAD_USER1 = "SELECT * FROM account where email = ?";
 	static final String UPDATE_USER = "UPDATE account SET name = ?, phone = ?, email = ?, password=? WHERE id = ?";
+	static final String COUNT = "SELECT COUNT(*) FROM account WHERE admin != 0";
+
+	public int count() {
+		int count = 0;
+		try {
+			Connection cnt = Dbcontext.getConnection();
+			Statement st = cnt.createStatement();
+			ResultSet rs = st.executeQuery(COUNT);
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 
 	public boolean validate(String email, String password) {
 		boolean success = false;
@@ -153,7 +170,42 @@ public class UserDao {
 		}
 		return user;
 	}
-	
+
+	public List<Account> getAllUser() throws SQLException {
+		List<Account> user = new ArrayList<>();
+		Connection cn = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			cn = Dbcontext.getConnection();
+			if (cn != null) {
+				pst = cn.prepareStatement(GET_USER1);
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String name = rs.getString("name");
+					String password = rs.getString("password");
+					String email = rs.getString("email");
+					String phone = rs.getString("phone");
+					int admin = rs.getInt("admin");
+					user.add(new Account(id, name, password, email, phone, admin));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pst != null) {
+				pst.close();
+			}
+			if (cn != null) {
+				cn.close();
+			}
+		}
+		return user;
+	}
 
 	public Account getItem(String theStudentId) throws Exception {
 
