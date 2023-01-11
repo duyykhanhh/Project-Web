@@ -13,7 +13,7 @@
 	<div class="card mb-4">
 		<div class="card-header"></div>
 	</div>
-	<a href="admin-add-orderdetail">Add</a>
+	<a href="${pageContext.request.contextPath}/admin-add-order-detail">Add</a>
 	<table border="1">
 		<tr>
 			<th>ID</th>
@@ -26,23 +26,23 @@
 
 		<c:forEach var="item" items="${list}">
 			<!-- set up a link for each student -->
-			<c:url var="tempLink" value="admin-edit-orderdetail">
+			<c:url var="tempLink" value="/admin-edit-order-detail">
 				<c:param name="command" value="LOAD" />
-				<c:param name="id" value="${item.oderDetailId}" />
+				<c:param name="id" value="${item.id}" />
 			</c:url>
 			<!-- set up a link for each student -->
-			<c:url var="deleteLink" value="admin-delete-orderdetail">
+			<c:url var="deleteLink" value="/admin-delete-order-detail">
 				<c:param name="command" value="DELETE" />
-				<c:param name="id" value="${item.oderDetailId}" />
+				<c:param name="id" value="${item.id}" />
 			</c:url>
 			<tr>
-				<td>${item.oderDetailId}</td>
-				<td>${item.productId.productId}</td>
+				<td>${item.id}</td>
+				<td>${item.productId}</td>
 				<td>${item.price}</td>
 				<td>${item.quantity}</td>
-				<td>${item.orderId.orderId}</td>
-				<td><a href="admin-edit-orderdetail">Update</a> | <a
-					href="admin-delete-orderdetail"
+				<td>${item.orderId}</td>
+				<td><a href="${tempLink }">Update</a> | <a
+					href="${deleteLink }"
 					onclick="if (!(confirm('Are you sure you want to delete this order detail?')))
 					    return false">Delete</a>
 				</td>

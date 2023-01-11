@@ -16,12 +16,15 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<link rel="shortcut icon" href="images/favicon.png" type="">
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/view/web/images/favicon.png"
+	type="">
 
 <title>ABC Chicken</title>
 
 <!-- bootstrap core css -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/view/web/css/bootstrap.css" />
 
 <!--owl slider stylesheet -->
 <link rel="stylesheet" type="text/css"
@@ -32,12 +35,17 @@
 	integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
 	crossorigin="anonymous" />
 <!-- font awesome style -->
-<link href="css/font-awesome.min.css" rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/view/web/css/font-awesome.min.css"
+	rel="stylesheet" />
 
 <!-- Custom styles for this template -->
-<link href="css/style.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/view/web/css/style.css"
+	rel="stylesheet" />
 <!-- responsive style -->
-<link href="css/responsive.css" rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/view/web/css/responsive.css"
+	rel="stylesheet" />
 
 </head>
 
@@ -45,14 +53,17 @@
 
 	<div class="hero_area">
 		<div class="bg-box">
-			<img src="images/hero-bg.jpg" alt="">
+			<img
+				src="${pageContext.request.contextPath}/view/web/images/hero-bg.jpg"
+				alt="">
 		</div>
 		<!-- header section strats -->
 		<header class="header_section">
 			<div class="container">
 				<nav class="navbar navbar-expand-lg custom_nav-container ">
-					<a class="navbar-brand" href="index.html"> <span> ABC
-							Chicken </span>
+					<a class="navbar-brand"
+						href="${pageContext.request.contextPath}/trang-chu"> <span>
+							ABC Chicken </span>
 					</a>
 
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -64,20 +75,21 @@
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav  mx-auto ">
-							<li class="nav-item active"><a class="nav-link"
-								href="index.html">Trang chủ <span class="sr-only">(current)</span></a>
-							</li>
 							<li class="nav-item"><a class="nav-link"
-								href="shop-grid.html">Thực đơn</a></li>
-							<li class="nav-item"><a class="nav-link" href="about.html">About
-									us</a></li>
-							<li class="nav-item"><a class="nav-link" href="book.html">Đặt
-									bàn</a></li>
+								href="${pageContext.request.contextPath}/trang-chu">Trang
+									chủ <span class="sr-only">(current)</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="${pageContext.request.contextPath}/thuc-don">Thực đơn</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="${pageContext.request.contextPath}/about">About us</a></li>
+							<li class="nav-item active"><a class="nav-link"
+								href="${pageContext.request.contextPath}/order">Đặt bàn</a></li>
 						</ul>
 						<div class="user_option">
-							<a href="" class="user_link"> <i class="fa fa-user"
+							<a href="${pageContext.request.contextPath}/login" class="user_link"> <i class="fa fa-user"
 								aria-hidden="true"></i>
-							</a> <a class="cart_link" href="#"> <svg version="1.1"
+							</a> <a class="cart_link" href="${pageContext.request.contextPath}/cart"> <svg version="1.1"
 									id="Capa_1" xmlns="http://www.w3.org/2000/svg"
 									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									viewBox="0 0 456.029 456.029"
@@ -143,7 +155,7 @@
 									<i class="fa fa-search" aria-hidden="true"></i>
 								</button>
 							</form>
-							<a href="" class="order_online"> Order Online </a>
+							<a href="${pageContext.request.contextPath}/thuc-don" class="order_online"> Order Online </a>
 						</div>
 					</div>
 				</nav>
@@ -251,7 +263,7 @@
 	<!-- footer section -->
 
 	<!-- jQery -->
-	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/view/web/js/jquery-3.4.1.min.js"></script>
 	<!-- popper js -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -260,7 +272,7 @@
 		
 	</script>
 	<!-- bootstrap js -->
-	<script src="js/bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/view/web/js/bootstrap.js"></script>
 	<!-- owl slider -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
@@ -273,7 +285,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
 	<!-- custom js -->
-	<script src="js/custom.js"></script>
+	<script src="${pageContext.request.contextPath}/view/web/js/custom.js"></script>
 	<!-- Google Map -->
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">

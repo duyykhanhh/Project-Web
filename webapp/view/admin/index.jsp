@@ -12,7 +12,7 @@
 			<div class="card-body">Products</div>
 			<div
 				class="card-footer d-flex align-items-center justify-content-between">
-				<div class="small text-white">Total number: 10</div>
+				<div class="small text-white">Total number: ${totalProduct }</div>
 			</div>
 		</div>
 	</div>
@@ -22,7 +22,7 @@
 			<div class="card-body">Users</div>
 			<div
 				class="card-footer d-flex align-items-center justify-content-between">
-				<div class="small text-white">Total number: 10</div>
+				<div class="small text-white">Total number: ${totalUser }</div>
 			</div>
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 			<div class="card-body">Orders</div>
 			<div
 				class="card-footer d-flex align-items-center justify-content-between">
-				<div class="small text-white">Total number: 10</div>
+				<div class="small text-white">Total number: ${totalOrder }</div>
 			</div>
 		</div>
 	</div>
@@ -44,7 +44,7 @@
 			<div class="card-body">Order Details</div>
 			<div
 				class="card-footer d-flex align-items-center justify-content-between">
-				<div class="small text-white">Total number: 10</div>
+				<div class="small text-white">Total number: ${numberOrderdetail }</div>
 			</div>
 		</div>
 	</div>

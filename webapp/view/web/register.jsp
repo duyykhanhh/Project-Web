@@ -52,7 +52,7 @@
 	<header class="header_section" style="background-color: black;">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg custom_nav-container ">
-				<a class="navbar-brand" href="index.jsp"> <span> ABC
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/trang-chu"> <span> ABC
 						Chicken </span>
 				</a>
 
@@ -66,17 +66,17 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav  mx-auto ">
 						<li class="nav-item active"><a class="nav-link"
-							href="index.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+							href="${pageContext.request.contextPath}/trang-chu">Trang chủ <span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="shop-grid.jsp">Shop</a>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/thuc-don">Thực đơn</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="about.jsp">About
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/about">About
 								us</a></li>
-						<li class="nav-item"><a class="nav-link" href="book.jsp">Book</a>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/order">Book</a>
 						</li>
 					</ul>
 					<div class="user_option">
-						<a href="" class="user_link"> <i class="fa fa-user"
+						<a href="${pageContext.request.contextPath}/login" class="user_link"> <i class="fa fa-user"
 							aria-hidden="true"></i>
 						</a> <a class="cart_link" href="#"> <svg version="1.1" id="Capa_1"
 								xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +144,7 @@
 								<i class="fa fa-search" aria-hidden="true"></i>
 							</button>
 						</form>
-						<a href="" class="order_online"> Order Online </a>
+						<a href="${pageContext.request.contextPath}/thuc-don" class="order_online"> Order Online </a>
 					</div>
 				</div>
 			</nav>
@@ -207,7 +207,7 @@
 
 			<div class="login-container">
 				<p>Bạn chưa có tài khoản</p>
-				<a href="${pageContext.request.contextPath}/view/web/login.jsp">Đăng
+				<a href="${pageContext.request.contextPath}/login">Đăng
 					Nhập</a>
 			</div>
 		</div>

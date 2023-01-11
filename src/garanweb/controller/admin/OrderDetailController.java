@@ -12,25 +12,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import garanweb.dao.OrderDao;
+import garanweb.dao.OrderDetailDao;
 import garanweb.dao.ProductDao;
 import garanweb.entity.Account;
+import garanweb.entity.Order;
+import garanweb.entity.OrderItem;
 import garanweb.entity.Product;
 
 /**
- * Servlet implementation class ProductController
+ * Servlet implementation class OrderDetailController
  */
-@WebServlet({ "/admin-product", "/admin-edit-product", "/admin-add-product", "/admin-delete-product" })
-public class ProductController extends HttpServlet {
+@WebServlet({ "/admin-order-detail", "/admin-add-order-detail", "/admin-delete-order-detail",
+		"/admin-edit-order-detail" })
+public class OrderDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ProductDao dao;
+	private OrderDetailDao dao;
+	private ProductDao productdao;
+	private OrderDao orderdao;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ProductController() {
+	public OrderDetailController() {
 		super();
 		// TODO Auto-generated constructor stub
-		dao = new ProductDao();
+		dao = new OrderDetailDao();
+		productdao = new ProductDao();
+		orderdao = new OrderDao();
 	}
 
 	/**
@@ -57,7 +66,11 @@ public class ProductController extends HttpServlet {
 			if(user != null) {
 				String url = request.getRequestURL().toString();
 				if (url.contains("add")) {
-					request.getRequestDispatcher("view/admin/add/add-product.jsp").forward(request, response);
+					List<Order> listOrder = orderdao.findAll();
+					List<Product> listProduct = productdao.findAll();
+					request.setAttribute("listOrder", listOrder);
+					request.setAttribute("listProduct", listProduct);
+					request.getRequestDispatcher("view/admin/add/add-order-detail.jsp").forward(request, response);
 				} else if (url.contains("edit")) {
 					load(request, response);
 				} else if (url.contains("delete")) {
@@ -79,41 +92,40 @@ public class ProductController extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
-			String name = request.getParameter("productName");
-			name = new String(name.getBytes("ISO8859_1"), "UTF-8");
-			String image = request.getParameter("image");
-			image = new String(image.getBytes("ISO8859_1"), "UTF-8");
+			
+			int productId = Integer.parseInt(request.getParameter("productId"));
+			int orderId = Integer.parseInt(request.getParameter("orderId"));
+			int quantity = Integer.parseInt(request.getParameter("quantity"));
 			BigDecimal price = new BigDecimal(request.getParameter("price"));
-			Product item = new Product(name, image, price);
-			System.out.println(item.toString());
+			OrderItem item = new OrderItem(0, quantity, price, orderId, productId);
 			dao.add(item);
-//			list(request, response);
-			response.sendRedirect(request.getContextPath() + "/admin-product");
+			response.sendRedirect(request.getContextPath() + "/admin-order-detail");
 		} catch (Exception e) {
 		}
 	}
 
 	public void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Product> list = null;
+		List<OrderItem> list = null;
 		list = dao.findAll();
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("view/admin/admin-product.jsp").forward(request, response);
+		request.getRequestDispatcher("view/admin/admin-order-detail.jsp").forward(request, response);
 	}
 
 	public void edit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
+
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("productName");
-		name = new String(name.getBytes("ISO8859_1"), "UTF-8");
-		String image = request.getParameter("image");
-		image = new String(image.getBytes("ISO8859_1"), "UTF-8");
+		
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		int orderId = Integer.parseInt(request.getParameter("orderId"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		BigDecimal price = new BigDecimal(request.getParameter("price"));
-		Product item = new Product(name, image, price);
+		OrderItem item = new OrderItem(0, quantity, price, orderId, productId);
 		item.setId(id);
 		dao.update(item);
-		response.sendRedirect(request.getContextPath() + "/admin-product");
+		response.sendRedirect(request.getContextPath() + "/admin-order-detail");
 	}
 
 	public void load(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -121,18 +133,21 @@ public class ProductController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		Product item = dao.getItem(id);
+		OrderItem item = dao.getItem(id);
+		System.out.println(item.toString());
+		List<Order> listOrder = orderdao.findAll();
+		List<Product> listProduct = productdao.findAll();
+		request.setAttribute("listOrder", listOrder);
+		request.setAttribute("listProduct", listProduct);
 		request.setAttribute("item", item);
-		request.getRequestDispatcher("view/admin/edit/edit-product.jsp").forward(request, response);
+		request.getRequestDispatcher("view/admin/edit/edit-order-detail.jsp").forward(request, response);
 	}
 
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		System.out.println(id.toString());
 		dao.delete(id);
-		response.sendRedirect(request.getContextPath() + "/admin-product");
+		response.sendRedirect(request.getContextPath() + "/admin-order-detail");
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
